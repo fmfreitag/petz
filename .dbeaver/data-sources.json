@@ -1,0 +1,36 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-173337b393f-43d0bc45e3a7575c": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "Heroku ",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "us-cdbr-iron-east-01.cleardb.net",
+				"port": "3306",
+				"database": "heroku_78810b58c535b28",
+				"url": "jdbc:mysql://us-cdbr-iron-east-01.cleardb.net:3306/heroku_78810b58c535b28",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000"
+				},
+				"provider-properties": {
+					"@dbeaver-serverTimezone@": "America/Sao_Paulo"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
