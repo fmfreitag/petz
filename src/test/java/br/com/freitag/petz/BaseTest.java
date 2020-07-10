@@ -39,12 +39,7 @@ public abstract class BaseTest {
 	@Mock
 	JwtUser jwtUser;
 
-	@Autowired
-	private JwtTokenUtil jwtTokenUtil;
-
-	protected static final String DOC_USUARIO_LOGADO = "222.222.222-22";
-	@Value("${urlAutenticaDev}")
-	private String urlAutenticaDev;
+	protected static final String DOC_USUARIO_LOGADO = "35455378000164";
 
 	@LocalServerPort
 	protected int port;
@@ -61,26 +56,20 @@ public abstract class BaseTest {
 		Mockito.when(securityContext.getAuthentication()).thenReturn(authentication);
 		Mockito.when(authentication.getName()).thenReturn(DOC_USUARIO_LOGADO);
 
-
-
-
         urlBase = "http://localhost:"+port;
 
-        LoginVO login = new LoginVO(DOC_USUARIO_LOGADO, "12345");
-		ResponseEntity<ApiResponse<String>> responseEntity = restTemplate.exchange(urlAutenticaDev + "/autenticacao",
+        LoginVO login = new LoginVO(DOC_USUARIO_LOGADO, "455378");
+		ResponseEntity<ApiResponse<String>> responseEntity = restTemplate.exchange(urlBase + "/api/autenticacao",
 																				HttpMethod.POST,
 																				new HttpEntity<LoginVO>(login ),
 																				new ParameterizedTypeReference<ApiResponse<String>>() {});
 
-
 		String token = responseEntity.getBody().getResult();
-
 
 		 jwtUser = new JwtUser();
 		 jwtUser.setToken(token);
 
 		 Mockito.when(authentication.getPrincipal()).thenReturn(jwtUser);
-
 
         headers = new HttpHeaders();
         headers.add(Constants.HEADER_STRING, token);
